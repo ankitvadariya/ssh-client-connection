@@ -1,0 +1,34 @@
+{
+  "name": "ssh-client-connection",
+  "version": "1.0.0",
+  "description": "This Project is to use to when we need to give root access of server without sharing root password",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankitvadariya/ssh-client-connection.git"
+  },
+  "keywords": [
+    "SSH",
+    "Connection",
+    "Xtrem",
+    "Client",
+    "SSH"
+  ],
+  "author": "Ankit Vadariya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankitvadariya/ssh-client-connection/issues"
+  },
+  "homepage": "https://github.com/ankitvadariya/ssh-client-connection#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0",
+    "ssh2": "^0.8.2",
+    "utf8": "^3.0.0",
+    "xterm": "^3.11.0"
+  }
+}

@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>SSH Terminal</title>
+    <link
+      rel="stylesheet"
+      href="xterm/dist/xterm.css"
+    />
+    <script src="xterm/dist/xterm.js"></script>
+    <script src="xterm/dist/addons/fit/fit.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script>
+      var socket;
+      window.addEventListener(
+        "load",
+        function() {
+          var terminalContainer = document.getElementById("terminal-container");
+          var term = new Terminal({ cursorBlink: true });
+          term.open(terminalContainer);
+          term.fit();
+
+          socket = io.connect();
+          socket.on("connect", function() {
+            term.write("\r\n*** Connected to backend***\r\n");
+
+            // Browser -> Backend
+            term.on("data", function(data) {
+              //console.log(data);
+              //                        alert("Not allowd to write. Please don't remove this alert without permission of Ankit or Samir sir. It will be a problem for server'");
+              socket.emit("data", data);
+            });
+
+            // Backend -> Browser
+            socket.on("data", function(data) {
+              term.write(data);
+            });
+
+            socket.on("disconnect", function() {
+              term.write("\r\n*** Disconnected from backend***\r\n");
+            });
+          });
+        },
+        false
+      );
+    </script>
+    <style>
+      body {
+        font-family: helvetica, sans-serif, arial;
+        font-size: 1em;
+        color: #111;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      #terminal-container {
+        width: 960px;
+        height: 600px;
+        display: inline-block;
+        padding: 2px;
+      }
+
+      .function {
+        display: inline-block;
+        float: right;
+      }
+
+      #terminal-container .terminal {
+        background-color: #111;
+        color: #fafafa;
+        padding: 2px;
+      }
+
+      #terminal-container .terminal:focus .terminal-cursor {
+        background-color: #fafafa;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="terminal-container"></div>
+  </body>
+</html>

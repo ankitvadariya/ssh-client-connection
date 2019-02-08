@@ -18,3 +18,4 @@ SSH client connection library can be use when you don't want to share your serve
 
 - I would like to recommand SSL if you are going to use on live envirment.
 - Please use it with your own risk.
+- feel free to contact me: iam@ankitvadariya.com

@@ -9,7 +9,7 @@ SSH client connection library can be use when you don't want to share your serve
   4. add server detail in server.js
 ```
 		  host: "YOUR_HOST",
-		  port: "PORT", // Generally 22 but some server have diffrent port for security Reson
+		  port: PORT, // Generally 22 but some server have diffrent port for security Reson
 		  username: "USER", // any user
 		  password: "PASSWORD" // Set password or use PrivateKey
 		  privateKey: require("fs").readFileSync("PATH OF KEY FILE")
